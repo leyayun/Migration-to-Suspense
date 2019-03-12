@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from './Spinner';
-import fetchAPI from './fetchAPI';
+import fetchAPI from '../utils/fetchAPI';
 
 class Profile extends Component {
   state = {

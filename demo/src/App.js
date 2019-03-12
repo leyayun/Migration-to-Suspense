@@ -1,12 +1,12 @@
 import React from 'react';
 import { Router } from "@reach/router";
 
-import TabContainer from './TabContainer';
-import NavLink from './NavLink';
+import TabContainer from './components/TabContainer';
+import NavLink from './components/NavLink';
 
-import Profile from './Profile';
-import Albums from './Albums';
-import Voting from './Voting';
+import Profile from './components/Profile';
+import Albums from './components/Albums';
+import Voting from './components/Voting';
 
 import './App.css';
 

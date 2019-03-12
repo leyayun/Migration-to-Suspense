@@ -1,5 +1,5 @@
 import React from 'react';
-import useNetworkState from './useNetworkState';
+import useNetworkState from '../hooks/useNetworkState';
 
 function TabContainer({ children }) {
   const [isFast, setIsFast] = useNetworkState(window.isFastNetwork);

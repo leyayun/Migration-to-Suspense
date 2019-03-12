@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Spinner from './Spinner';
-import fetchAPI from './fetchAPI';
+import fetchAPI from '../utils/fetchAPI';
 
 export default class Album extends Component {
   state = {

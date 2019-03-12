@@ -1,4 +1,4 @@
-import data from './data';
+import data from '../data';
 
 function isImage(url) {
   if (!url || typeof url === 'object') {

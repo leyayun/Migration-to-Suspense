@@ -1,7 +1,7 @@
 import Chart from 'chart.js';
 import React from 'react';
 
-import chartOptions from './chartOptions';
+import chartOptions from '../utils/chartOptions';
 
 class SongsPopularity extends React.Component {
   canvasRef = React.createRef();
