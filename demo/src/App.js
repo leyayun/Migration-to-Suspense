@@ -1,14 +1,15 @@
-import React from 'react';
+import './App.css';
+
+import React, { lazy, Suspense } from 'react';
 import { Router } from "@reach/router";
 
 import TabContainer from './components/TabContainer';
 import NavLink from './components/NavLink';
-
 import Profile from './components/Profile';
-import Albums from './components/Albums';
-import Voting from './components/Voting';
+import Spinner from './components/Spinner';
 
-import './App.css';
+const Albums = lazy(() => import('./components/Albums'));
+const Voting = lazy(() => import('./components/Voting'));
 
 function App() {
   return (
@@ -20,11 +21,13 @@ function App() {
         <NavLink to="voting">Voting</NavLink>
       </nav>
       <TabContainer>
-        <Router>
-          <Profile path="/" />
-          <Albums path="albums" />
-          <Voting path="voting" />
-        </Router>
+        <Suspense fallback={<Spinner />}>
+          <Router>
+            <Profile path="/" />
+            <Albums path="albums" />
+            <Voting path="voting" />
+          </Router>
+        </Suspense>
       </TabContainer>
     </div>
   );
