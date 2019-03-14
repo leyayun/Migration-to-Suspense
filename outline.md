@@ -30,3 +30,7 @@ The problems are narrowed down to code splitting & async data fetching.
 
 4. Road map
 Tell people that a big part of Suspense is not ready yet.
+
+
+# issues
+[Cannot ready property 'readContext' of undefined](https://github.com/facebook/react/issues/14575)

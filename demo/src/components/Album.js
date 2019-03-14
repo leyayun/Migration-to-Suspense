@@ -1,47 +1,27 @@
-import React, { Component } from 'react';
+import React from "react";
+import { unstable_createResource } from "react-cache";
 
-import Spinner from './Spinner';
-import fetchAPI from '../utils/fetchAPI';
+import fetchAPI from "../utils/fetchAPI";
 
-export default class Album extends Component {
-  state = {
-    album: null,
-  };
+const albumResource = unstable_createResource(id => fetchAPI(`/albums/${id}`));
 
-  componentDidMount() {
-    fetchAPI(`/albums/${this.props.id}`).then((album) => {
-      this.setState({ album });
-    });
-  }
+export default function Album({ id }) {
+  const album = albumResource.read(id);
+  const { name, releasedDate, numberOfSongs, duration, cover, notes } = album;
 
-  render() {
-    const { album } = this.state;
-
-    if (album == null) {
-      return <Spinner />;
-    }
-
-    const {
-      name,
-      releasedDate,
-      numberOfSongs,
-      duration,
-      cover,
-      notes,
-    } = album;
-
-    return (
-      <section key={name} className="album">
-        <div className="album-cover-container">
-          <img src={cover} alt="cover" />
-        </div>
-        <div className="album-info">
-          <h3>{name}</h3>
-          <p>{releasedDate}</p>
-          <p>{numberOfSongs} Songs, {duration}</p>
-          <p>{notes}</p>
-        </div>
-      </section>
-    );
-  }
+  return (
+    <section key={name} className="album">
+      <div className="album-cover-container">
+        <img src={cover} alt="cover" />
+      </div>
+      <div className="album-info">
+        <h3>{name}</h3>
+        <p>{releasedDate}</p>
+        <p>
+          {numberOfSongs} Songs, {duration}
+        </p>
+        <p>{notes}</p>
+      </div>
+    </section>
+  );
 }
